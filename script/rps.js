@@ -1,4 +1,9 @@
-
+// Array of Choices
+const choice = [
+    "rock",
+    "paper",
+    "scissors"
+];
 
 // Selects the choice randonmly for the computer
 function computerPlay(arr) {
@@ -7,68 +12,65 @@ function computerPlay(arr) {
     return selection;
 };
 
-// Choices for the game
-const choice = [
-    'Rock',
-    'Paper',
-    'Scissors'
-];
-
-// Creating the actual choice of the computer.
-let computerSelection = computerPlay(choice)
-
-// Test to ensure random selection is working
-console.log(computerSelection)
-
-// Player inputs choice for the game
-let playerSelection = prompt("Rock, Paper, or Scissors?", " ");
-
 // Plays a single round of Rock, Paper, Scissors
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === rock) {
-        if (computerSelection === rock) {
-            alert("Draw!")
+    
+    if (playerSelection === "rock"){
+        if (computerSelection == "Rock") {
+                return "Draw!";
         }
-        elseif (computerSelection === paper) {
-            alert("You lose! Paper beats Rock.")
-        }
-        elseif (computerSelection === scissors) {
-            alert("You win! Rock beats Scissors.")
-        }
-        else {
-            alert("Oh no something went wrong! Make sure you select a proper option")
+        
+        else if (computerSelection == "Paper") {
+                return "You lose! Paper beats Rock.";
         }
 
+        else (computerSelection == "scissors"); {
+                return "You win! Rock beats Scissors.";
+        }
+    }
+    
+    else if (playerSelection === "paper") {
+        if (computerSelection === "rock") {
+                return "You win! Paper beats Rock.";
+        }
+        else if (computerSelection === "paper") {
+                return "Draw!";
+        }
+        else (computerSelection === "scissors"); {
+                return "You lose! Scissors beats Rock.";
+        }
     }
 
-    elseif (playerSelection === paper) {
-        if (computerSelection === rock) {
-            alert("You win! Paper beats Rock.")
+    if (playerSelection === "scissors") {
+        if (computerSelection === "rock") {
+                return "You lose! Rock beats Scissors";
         }
-        elseif (computerSelection === paper) {
-            alert("Draw!")
-        }
-        elseif (computerSelection === scissors) {
-            alert("You lose! Scissors beats Rock.")
-        }
-        else {
-            alert("Oh no something went wrong! Make sure you select a proper option")
+        else if (computerSelection === "paper") {
+                return "You win! Scissors beats Paper.";
         }
 
+        else (computerSelection === "scissors"); {
+                return "Draw";
+        }
     }
 
-    if (playerSelection === scissors) {
-        if (computerSelection === rock) {
-            alert("You lose! Rock beats Scissors")
-        }
-        elseif (computerSelection === paper) {
-            alert("You win! Scissors beats Paper.")
-        }
-        elseif (computerSelection === scissors) {
-            alert("Draw!")
-        }
-        else {
-            alert("Oh no something went wrong! Make sure you select a proper option")
-        }
-
+    else (playerSelection !== "rock || paper || scissors"); {
+        return "Oh no something went wrong! Make sure you enter a proper option"
     }
+};
+
+// Player inputs choice for the game
+const playerSelection = prompt("Rock, Paper, or Scissors?", " ");
+    console.log(playerSelection);
+
+// Creating the actual choice of the computer.
+const computerSelection = computerPlay(choice)
+
+// Test to ensure random selection is working
+    console.log(computerSelection);
+
+// Playing a single round
+ console.log(playRound(playerSelection.toLowerCase(), computerSelection));
+
+
+    
