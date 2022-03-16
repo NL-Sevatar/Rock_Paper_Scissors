@@ -1,4 +1,3 @@
-// Array of Choices
 const choice = [
     "rock",
     "paper",
@@ -9,21 +8,33 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Selects the choice randonmly for the computer
-function computerPlay(arr) {
-    let random = Math.floor(Math.random()*arr.length);
-    let selection = arr[random];
-    return selection;
+function computerPlay() {
+    let random = Math.floor(Math.random()*choice.length);
+    let computerSelection = choice[random];
+    return computerSelection;
 };
 
+const buttons = document.querySelectorAll('#pick');
+buttons.forEach((pick) => {pick.addEventListener('click', () => {
+    // const sel = pick.querySelector('title');
+    playerSelection = pick.title;
+    console.log(playerSelection);
+    playRound(playerSelection);
+    })})
+
 // Plays a single round of Rock, Paper, Scissors
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    console.log('Function starting');
+     
+    const computerSelection = computerPlay();
+    console.log(computerSelection);
+
+    if (playerSelection === computerSelection) {
+        return "Draw!"
+    }
     
     if (playerSelection === "rock"){
-        if (computerSelection === "rock") {
-                return "Draw!";
-        }
-        
-        else if (computerSelection === "paper") {
+        if (computerSelection === "paper") {
                 computerScore++;
                 return "You lose! Paper beats Rock.";
         }
@@ -35,13 +46,12 @@ function playRound(playerSelection, computerSelection) {
     }
     
     else if (playerSelection === "paper") {
+        
         if (computerSelection === "rock") {
                 playerScore++
                 return "You win! Paper beats Rock.";
         }
-        else if (computerSelection === "paper") {
-                return "Draw!";
-        }
+        
         else (computerSelection === "scissors"); {
                 computerScore++
                 return "You lose! Scissors beats Rock.";
@@ -53,34 +63,12 @@ function playRound(playerSelection, computerSelection) {
                 computerScore++
                 return "You lose! Rock beats Scissors";
         }
-        else if (computerSelection === "paper") {
+        else (computerSelection === "paper"); {
                 playerScore++
                 return "You win! Scissors beats Paper.";
         }
-
-        else (computerSelection === "scissors"); {
-                return "Draw";
-        }
-    }
-
-    else (playerSelection !== "rock || paper || scissors"); {
-        return "Oh no something went wrong! Make sure you enter a proper option"
     }
 };
-
-function selections() {
-
-    // Player inputs choice for the game
-const playerSelection = prompt("Rock, Paper, or Scissors?", " ".toLowerCase);
-    console.log(playerSelection);
-
-// Creating the actual choice of the computer.
-const computerSelection = computerPlay(choice)
-
-// Test to ensure random selection is working
-    console.log(computerSelection);
-
-}
 
 function score() {
     if (playerScore > computerScore){
@@ -93,36 +81,3 @@ function score() {
         console.log("Oops! Something went wrong.")
     }
 }
-
-function game() {
-let i = 0;
-    do {
-        let playerSelection = prompt("Rock, Paper, or Scissors?", " ");
-        let computerSelection = computerPlay(choice);
-        console.log(playRound(playerSelection.toLowerCase(), computerSelection));
-        i++;
-    }
-    while(i <5 )
-    
-    return score();
-};
-
-
-
-// Playing a single round
-    
-  /*  // Player inputs choice for the game
-       let playerSelection = prompt("Rock, Paper, or Scissors?", " ");
-       console.log(playerSelection);
-
-    // Creating the actual choice of the computer.
-       let computerSelection = computerPlay(choice)
-
-    // Test to ensure random selection is working
-       console.log(computerSelection);
-
-    // Single Round
-       console.log(playRound(playerSelection.toLowerCase(), computerSelection));
-*/
-// Playing a full 5 rounds
-    game();
