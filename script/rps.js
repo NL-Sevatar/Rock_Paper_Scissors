@@ -24,24 +24,26 @@ buttons.forEach((pick) => {pick.addEventListener('click', () => {
 
 // Plays a single round of Rock, Paper, Scissors
 function playRound(playerSelection) {
-    console.log('Function starting');
+    let battle = document.querySelector('#results')
      
-    const computerSelection = computerPlay();
+    let computerSelection = computerPlay();
     console.log(computerSelection);
 
     if (playerSelection === computerSelection) {
-        return "Draw!"
+        battle.textContent = "Draw!";
     }
     
     if (playerSelection === "rock"){
         if (computerSelection === "paper") {
                 computerScore++;
-                return "You lose! Paper beats Rock.";
+                compUpdate();
+                battle.textContent = "You lose! Paper beats Rock.";
         }
 
         else (computerSelection === "scissors"); {
                 playerScore++
-                return "You win! Rock beats Scissors.";
+                playerUpdate();
+                battle.textContent = "You win! Rock beats Scissors.";
         }
     }
     
@@ -49,24 +51,29 @@ function playRound(playerSelection) {
         
         if (computerSelection === "rock") {
                 playerScore++
-                return "You win! Paper beats Rock.";
+                playerUpdate();
+                battle.textContent = "You win! Paper beats Rock.";
         }
         
         else (computerSelection === "scissors"); {
                 computerScore++
-                return "You lose! Scissors beats Rock.";
+                compUpdate();
+                battle.textContent = "You lose! Scissors beats Rock.";
         }
     }
 
     if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-                computerScore++
-                return "You lose! Rock beats Scissors";
+                computerScore++;
+                compUpdate();
+                battle.textContent = "You lose! Rock beats Scissors";
         }
         else (computerSelection === "paper"); {
                 playerScore++
-                return "You win! Scissors beats Paper.";
+                playerUpdate();
+                battle.textContent = "You win! Scissors beats Paper.";
         }
+    
     }
 };
 
@@ -80,4 +87,13 @@ function score() {
     else {
         console.log("Oops! Something went wrong.")
     }
+}
+
+function compUpdate() {
+    let cScore = document.querySelector('#computer-score');
+    cScore.textContent = computerScore;
+}
+function playerUpdate() {
+    const pScore = document.querySelector('#player-score');
+    pScore.textContent = playerScore;
 }
