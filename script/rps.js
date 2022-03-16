@@ -18,8 +18,8 @@ const buttons = document.querySelectorAll('#pick');
 buttons.forEach((pick) => {pick.addEventListener('click', () => {
     // const sel = pick.querySelector('title');
     playerSelection = pick.title;
-    console.log(playerSelection);
     playRound(playerSelection);
+    game();
     })})
 
 // Plays a single round of Rock, Paper, Scissors
@@ -27,10 +27,10 @@ function playRound(playerSelection) {
     let battle = document.querySelector('#results')
      
     let computerSelection = computerPlay();
-    console.log(computerSelection);
-
+    
     if (playerSelection === computerSelection) {
         battle.textContent = "Draw!";
+        return;
     }
     
     if (playerSelection === "rock"){
@@ -38,12 +38,14 @@ function playRound(playerSelection) {
                 computerScore++;
                 compUpdate();
                 battle.textContent = "You lose! Paper beats Rock.";
+                return;
         }
 
         else (computerSelection === "scissors"); {
                 playerScore++
                 playerUpdate();
                 battle.textContent = "You win! Rock beats Scissors.";
+                return;
         }
     }
     
@@ -53,12 +55,14 @@ function playRound(playerSelection) {
                 playerScore++
                 playerUpdate();
                 battle.textContent = "You win! Paper beats Rock.";
+                return;
         }
         
         else (computerSelection === "scissors"); {
                 computerScore++
                 compUpdate();
                 battle.textContent = "You lose! Scissors beats Rock.";
+                return;
         }
     }
 
@@ -67,27 +71,17 @@ function playRound(playerSelection) {
                 computerScore++;
                 compUpdate();
                 battle.textContent = "You lose! Rock beats Scissors";
+                return;
         }
         else (computerSelection === "paper"); {
                 playerScore++
                 playerUpdate();
                 battle.textContent = "You win! Scissors beats Paper.";
+                return;
         }
     
     }
 };
-
-function score() {
-    if (playerScore > computerScore){
-        console.log("Player wins!")
-    }
-    else if (computerScore > playerScore) {
-        console.log("Computer wins!")
-    }
-    else {
-        console.log("Oops! Something went wrong.")
-    }
-}
 
 function compUpdate() {
     let cScore = document.querySelector('#computer-score');
@@ -97,3 +91,9 @@ function playerUpdate() {
     const pScore = document.querySelector('#player-score');
     pScore.textContent = playerScore;
 }
+
+function game() {
+    if (playerScore === 5 || computerScore === 5) {
+        alert()
+    }
+   }
