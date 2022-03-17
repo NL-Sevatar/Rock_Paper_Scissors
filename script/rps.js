@@ -6,6 +6,7 @@ const choice = [
 
 let playerScore = 0;
 let computerScore = 0;
+const battle = document.querySelector('#results')
 const pScore = document.querySelector('#player-score');    
 const cScore = document.querySelector('#computer-score');
 
@@ -24,9 +25,7 @@ buttons.forEach((pick) => {pick.addEventListener('click', () => {
     }
     })})
 
-function playRound(playerSelection) {
-    let battle = document.querySelector('#results')
-     
+function playRound(playerSelection) { 
     let computerSelection = computerPlay();
     
     if (playerSelection === computerSelection) {
@@ -85,7 +84,7 @@ function playRound(playerSelection) {
 };
 
 function compUpdate() {    
-    cScore.textContent = computerScore;
+        cScore.textContent = computerScore;
 }
 function playerUpdate() {
         pScore.textContent = playerScore;
@@ -96,14 +95,10 @@ function declareWinner() {
         window.alert('You are the victor!');
         let playerScore = 0;
         let computerScore = 0;
-        cScore.textContent = 0;     
-        pScore.textContent = 0;
+        location.reload();
     } 
     else if (computerScore === 5) {
         window.alert('Defeat, may they have mercy on your soul.');
-        let playerScore = 0;
-        let computerScore = 0;
-        cScore.textContent = 0;     
-       pScore.textContent = 0;
+      location.reload();
     }
    }
