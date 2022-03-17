@@ -6,8 +6,9 @@ const choice = [
 
 let playerScore = 0;
 let computerScore = 0;
+const pScore = document.querySelector('#player-score');    
+const cScore = document.querySelector('#computer-score');
 
-// Selects the choice randonmly for the computer
 function computerPlay() {
     let random = Math.floor(Math.random()*choice.length);
     let computerSelection = choice[random];
@@ -23,7 +24,6 @@ buttons.forEach((pick) => {pick.addEventListener('click', () => {
     }
     })})
 
-// Plays a single round of Rock, Paper, Scissors
 function playRound(playerSelection) {
     let battle = document.querySelector('#results')
      
@@ -84,15 +84,11 @@ function playRound(playerSelection) {
     }
 };
 
-const cScore = document.querySelector('#computer-score');
-const pScore = document.querySelector('#player-score');
-function compUpdate() {
-    
+function compUpdate() {    
     cScore.textContent = computerScore;
 }
 function playerUpdate() {
-    
-    pScore.textContent = playerScore;
+        pScore.textContent = playerScore;
 }
 
 function declareWinner() {
