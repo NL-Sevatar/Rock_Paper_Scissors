@@ -16,10 +16,11 @@ function computerPlay() {
 
 const buttons = document.querySelectorAll('#pick');
 buttons.forEach((pick) => {pick.addEventListener('click', () => {
-    // const sel = pick.querySelector('title');
     playerSelection = pick.title;
     playRound(playerSelection);
-    game();
+    if (playerScore == 5 || computerScore == 5){
+        declareWinner();
+    }
     })})
 
 // Plays a single round of Rock, Paper, Scissors
@@ -83,17 +84,30 @@ function playRound(playerSelection) {
     }
 };
 
+const cScore = document.querySelector('#computer-score');
+const pScore = document.querySelector('#player-score');
 function compUpdate() {
-    let cScore = document.querySelector('#computer-score');
+    
     cScore.textContent = computerScore;
 }
 function playerUpdate() {
-    const pScore = document.querySelector('#player-score');
+    
     pScore.textContent = playerScore;
 }
 
-function game() {
-    if (playerScore === 5 || computerScore === 5) {
-        alert()
+function declareWinner() {
+    if (playerScore > computerScore) {
+        window.alert('You are the victor!');
+        let playerScore = 0;
+        let computerScore = 0;
+        cScore.textContent = 0;     
+        pScore.textContent = 0;
+    } 
+    else if (computerScore === 5) {
+        window.alert('Defeat, may they have mercy on your soul.');
+        let playerScore = 0;
+        let computerScore = 0;
+        cScore.textContent = 0;     
+       pScore.textContent = 0;
     }
    }
